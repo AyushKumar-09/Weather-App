@@ -88,7 +88,7 @@ function App() {
 
             {/* Temprature */}
             <div className="m-1 p-2 text-6xl flex justify-center font-bold  ">
-              <p>{weather?.list[0]?.main?.temp} °C</p>
+              <p>{weather?.list[0]?.main?.temp}°C</p>
             </div>
 
             {/* Location */}
@@ -99,11 +99,11 @@ function App() {
             {/* temprature min max div */}
             <div className="text-center">
               <div className="m-2 p-6 text-xl">
-                <p>Min Temp : {weather?.list[0]?.main?.temp_min}</p>
+                <p>Min Temp : {weather?.list[0]?.main?.temp_min}°C</p>
               </div>
 
               <div className="m-2 p-6 text-xl">
-              <p> Max Temp : {weather?.list[0]?.main?.temp_max}</p>
+              <p> Max Temp : {weather?.list[0]?.main?.temp_max}°C</p>
               </div>
             </div>
 
@@ -116,7 +116,7 @@ function App() {
 
               {/* Conditons */}
               <div className="m-2 p-6 text-xl">
-                <p> Weather can be describe as <span className="font-bold">{weather?.list[0]?.weather[0]?.description}</span> and feels like {weather?.list[0]?.main?.feels_like}</p>
+                <p> Weather can be describe as <span className="font-bold">{weather?.list[0]?.weather[0]?.description}</span> and feels like {weather?.list[0]?.main?.feels_like}°C</p>
               </div>
             </div>
           </div>

@@ -25,9 +25,10 @@ function App() {
       const data = await fetch(`${api.base}find?q=${search}&units=metric&appid=${api.key}`);
     
       if (data.ok) {
+        //  converting th data to json
         const json = await data.json();
 
-        //  converting th data to json
+        
         if(json?.list?.length> 0 & json?.message ==="accurate"){
        
         // setting the json to  setWeatherfor retival

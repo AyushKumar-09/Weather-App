@@ -16,18 +16,29 @@ function App() {
   // useState declarations
   const [search, setSearch] = useState("");
   const [weather, setWeather] = useState(demo);
+  const [error, SetError] = useState('');
 
+  console.log(demo,"demo" );
   // API Calling
   const serachPressed = async () => {
-    const data = await fetch(`${api.base}find?q=${search}&units=metric&appid=${api.key}`);
-
-    //  converting th dat to json
-    const json = await data.json();
-
-    // setting the json to  setWeatherfor retival
-    setWeather(json);
     
-    
+      const data = await fetch(`${api.base}find?q=${search}&units=metric&appid=${api.key}`);
+      console.log(data);
+      if (data.ok) {
+        const json = await data.json();
+        console.log(json); 
+        //  converting th data to json
+        if(json?.list?.length> 0 & json?.message ==="accurate"){
+       
+        // setting the json to  setWeatherfor retival
+        setWeather(json);
+        SetError('');
+        }else{
+          SetError("City not Found . Please enter a valid city");
+          setWeather(demo);
+      }
+    }
+  
 
   };
 
@@ -44,7 +55,7 @@ function App() {
             alt="bg image" />
         </div>
         {/* Header Component */}
-       <Header/>
+        <Header />
 
         {/* main body */}
         <div className="h-screen flex items-center justify-center">
@@ -59,16 +70,23 @@ function App() {
                 onChange={(e) => setSearch(e.target.value)}
               />
 
-            
+
               <button
                 className="rounded-2xl w-auto p-4 bg-slate-700 ml-2 "
                 onClick={serachPressed}
               >Search</button>
             </div>
 
+            {/* error handling */}
+            <div>
+              <span className="font-bold">{error}</span>
+            </div>
+      
+            
+
             {/* Temprature */}
             <div className="m-2 p-3 text-6xl flex justify-center font-bold  ">
-              <p className="">{weather.list[0].main.temp} °C</p>
+              <p className="">{weather?.list[0]?.main?.temp} °C</p>
             </div>
 
             {/* Location */}
@@ -78,15 +96,15 @@ function App() {
 
 
             {/* describtion div */}
-            <div className="flex justify-between"> 
+            <div className="flex justify-between">
               {/* wind Speed */}
               <div className="m-5 p-6">
-                <p> Wind Speed: {weather.list[0].wind.speed}</p>
+                <p> Wind Speed: {weather?.list[0]?.wind?.speed}</p>
               </div>
 
               {/* Conditons */}
               <div className="m-5 p-6">
-                <p> Weather: {weather.list[0].weather[0].description}</p>
+                <p> Weather: {weather?.list[0]?.weather[0]?.description}</p>
               </div>
             </div>
           </div>

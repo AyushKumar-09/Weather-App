@@ -8,6 +8,7 @@ const Header = () => {
       className='w-12 m-4 '
       src={logo_url} 
       alt="logo" />
+      <h1 className='m-4 text-white text-3xl'>Weather Today</h1>
     </div>
   )
 }

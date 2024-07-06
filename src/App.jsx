@@ -7,7 +7,7 @@ import Header from "./Header";
 // APi details 
 const api = {
   key: "0851d814b3132464b92e4b99f71e283b",
-  base: "http://api.openweathermap.org/data/2.5/"
+  base: "https://api.openweathermap.org/data/2.5/"
 };
 
 
